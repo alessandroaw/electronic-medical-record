@@ -10,7 +10,7 @@
   <meta name="author" content="Pingendo">
   <!-- CSS dependencies -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="aquamarine.css" type="text/css">
+  <link rel="stylesheet" href="/aquamarine.css" type="text/css">
 </head>
 
 <body>
@@ -52,66 +52,14 @@
                 </tr>
               </thead>
               <tbody>
+                {{#each_upto pasien 10}}
                 <tr>
                   <th scope="row">1</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-danger" href="#">Diagnosa</a></td>
+                  <td>{{nama}}<br></td>
+                  <td>{{alamat}}</td>
+                  <td><a class="btn btn-danger" href="/pasien/{{_id}}">Diagnosa</a></td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-danger" href="#">Diagnosa</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-danger" href="#">Diagnosa</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-danger" href="#">Diagnosa</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-danger" href="#">Diagnosa</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">6</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-danger" href="#">Diagnosa</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">7</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-danger" href="#">Diagnosa</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">8</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-danger" href="#">Diagnosa</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">9</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-danger" href="#">Diagnosa</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">10</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-danger" href="#">Diagnosa</a></td>
-                </tr>
+                {{/each_upto}}
               </tbody>
             </table>
           </div>
@@ -141,7 +89,6 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
 </body>
 
 </html>

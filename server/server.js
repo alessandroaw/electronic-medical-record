@@ -11,16 +11,15 @@ const MongoStore = require('connect-mongo')(session);
 // local configuration
 const {ObjectID} = require('mongodb');
 const {mongoose} =  require('./db/mongoose');
-// var {Buku} = require('./models/buku');
 var {Dokter} = require('./models/dokter');
+// var {Buku} = require('./models/buku');
 // var {authenticate} = require('./middleware/authenticate');
 var app = express();
 const port = process.env.PORT || 3000;
 
 // route
-// const pustakawanRoute = require('./routes/pustakawan');
-// const anggotaRoute = require('./routes/anggota');
-// const bukuRoute = require('./routes/buku');
+const pasienRoute = require('./routes/pasien');
+const dokterRoute = require('./routes/dokter');
 
 //connect to MongoDB
 var db = mongoose.connection;
@@ -81,19 +80,20 @@ app.use((req,res, next) => {
 
 //home
 app.get('/', (req, res) => {
-	res.render('home.hbs', {
-		pageTitle:'Home Page'
-	});
-});
-
-//about
-app.get('/about', (req, res) => {
-	res.render('about.hbs', {
-		pageTitle:'About Page',
-	});
+	res.render('Daftar Pasien.hbs');
 });
 
 // route
+app.use('/dokter', dokterRoute);
+app.use('/pasien', pasienRoute);
+
+
+//ini apa ya?
+app.get('/pendaftaran', (req, res) => {
+	res.render('Pendaftaran.hbs');
+});
+
+
 
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);

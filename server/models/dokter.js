@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const _ = require('lodash');
 const bcrypt = require('bcryptjs');
 
-var PustakawanSchema = new mongoose.Schema({
+var DokterSchema = new mongoose.Schema({
 	nama:{
 		type: String,
 		required: true,
@@ -33,25 +33,25 @@ var PustakawanSchema = new mongoose.Schema({
 	},
 });
 
-PustakawanSchema.methods.toJSON = function(){
-	var pustakawan = this;
-	var userObject = pustakawan.toObject();
+DokterSchema.methods.toJSON = function(){
+	var dokter = this;
+	var userObject = dokter.toObject();
 
 	return _.pick(userObject, ['_id','nama', 'email']);
 };
 
-PustakawanSchema.statics.findByCredentials = function (email, password){
-	var Pustakawan = this;
-	return Pustakawan.findOne({email}).then((pustakawan) => {
+DokterSchema.statics.findByCredentials = function (email, password){
+	var Dokter = this;
+	return Dokter.findOne({email}).then((dokter) => {
 
-		if(!pustakawan){
+		if(!dokter){
 			return Promise.reject();
 		}
 
 		return new Promise((resolve, reject) => {
-			bcrypt.compare(password, pustakawan.password, (err,res) => {
+			bcrypt.compare(password, dokter.password, (err,res) => {
 			  if(res){
-					resolve(pustakawan);
+					resolve(dokter);
 				} else {
 					reject();
 				}
@@ -60,12 +60,13 @@ PustakawanSchema.statics.findByCredentials = function (email, password){
 	})
 };
 
-PustakawanSchema.pre('save', function (next) {
-	var pustakawan = this;
-	if (pustakawan.isModified('password')){
+
+DokterSchema.pre('save', function (next) {
+	var dokter = this;
+	if (dokter.isModified('password')){
 		bcrypt.genSalt(10, (error, salt) => {
-			bcrypt.hash(pustakawan.password, salt, (err, hash) => {
-		    pustakawan.password = hash;
+			bcrypt.hash(dokter.password, salt, (err, hash) => {
+		    dokter.password = hash;
 				next();
 		  });
 		});
@@ -74,5 +75,5 @@ PustakawanSchema.pre('save', function (next) {
 	}
 });
 
-var Pustakawan = mongoose.model('pustakawan', PustakawanSchema);
-module.exports = {Pustakawan};
+var Dokter = mongoose.model('dokter', DokterSchema);
+module.exports = {Dokter};

@@ -8,16 +8,16 @@
   <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.1.3.css">
 </head>
 
-<body>
-  <div class="py-5 text-center" style="background-image: url('https://media.istockphoto.com/photos/hospital-corridor-and-doctor-as-a-blurred-defocused-background-picture-id619636894?k=6&amp;m=619636894&amp;s=612x612&amp;w=0&amp;h=mmfnPn5yuUt91ElQwuL0mgGbbzLBL-iWa8VdRiBqgAU=');background-size:cover;">
+<body style="background-image: url('https://media.istockphoto.com/photos/hospital-corridor-and-doctor-as-a-blurred-defocused-background-picture-id619636894?k=6&amp;m=619636894&amp;s=612x612&amp;w=0&amp;h=mmfnPn5yuUt91ElQwuL0mgGbbzLBL-iWa8VdRiBqgAU=');background-size:cover;background-repeat:repeat-y">
+  <div class="py-5 text-center" >
     <div class="container">
       <div class="row">
         <div class="mx-auto col-md-6 col-10 bg-white p-5">
           <h1 class="mb-4">Log in</h1>
-          <form>
-            <div class="form-group"> <input type="text" class="form-control" id="form9" placeholder="ID Dokter"> </div>
-            <div class="form-group mb-3"> <input type="password" class="form-control" placeholder="Kata Sandi" id="form10"> <small class="form-text text-muted text-right">
-                <a href="#"> Lupa password?</a>
+          <form  action="/dokter/login" method="post">
+            <div class="form-group"> <input type="email" name="email" class="form-control" id="form9" placeholder="Email Dokter"> </div>
+            <div class="form-group mb-3"> <input type="password" name="password" class="form-control" placeholder="Kata Sandi" id="form10"> <small class="form-text text-muted text-right">
+                <!-- <a href="#"> Lupa password?</a> -->
               </small> </div> <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
