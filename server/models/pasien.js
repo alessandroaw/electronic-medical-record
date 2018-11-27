@@ -13,6 +13,7 @@ var PasienSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		trim: true,
+		unique: true,
 		minlength: 1,
 	},
 	tanggalLahir:{

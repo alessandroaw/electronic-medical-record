@@ -26,7 +26,7 @@
           <li class="nav-item"> <a class="nav-link" href="#" contenteditable="true">Bumi Medika Ganesha</a> </li>
         </ul>
         <ul class="navbar-nav">
-          <li class="nav-item"> <a class="nav-link text-primary" href="#">Masuk Sebagai Dokter</a> </li>
+          <li class="nav-item"> <a class="nav-link text-primary" href="/dokter/login">Masuk Sebagai Dokter</a> </li>
         </ul>
       </div>
     </div>
@@ -37,7 +37,7 @@
         <div class="col-md-10" style="">
           <h1 class="">Daftar Pasien</h1>
         </div>
-        <div class="col-md-2" style=""><a class="btn btn-primary" href="/tambah-pasien">Tambah Pasien</a></div>
+        <div class="col-md-2" style=""><a class="btn btn-primary" href="/pasien/tambah">Tambah Pasien</a></div>
       </div>
     </div>
   </div>
@@ -45,9 +45,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <form class="col-20" style="">
+          <form action="/" method="post" class="col-20">
             <div class="input-group">
-              <div class="input-group-append"><button class="btn btn-primary w-100" type="button"><i class="fa fa-search"></i></button></div><input type="text" class="form-control w-50" id="inlineFormInputGroup" placeholder="Masukkan nama pasien" style="">
+              <div class="input-group-append"><button type="submit" class="btn btn-primary w-100" type="button"><i class="fa fa-search"></i></button></div><input type="text" name="keyword" class="form-control w-50" id="inlineFormInputGroup" placeholder="Masukkan nama pasien" style="">
             </div>
           </form>
         </div>
@@ -65,70 +65,18 @@
                   <th scope="col" style="" class="table-primary w-25">ID</th>
                   <th scope="col" class="table-primary w-50">Nama</th>
                   <th scope="col" class="table-primary w-75">Alamat</th>
-                  <th scope="col" class="table-primary"></th>
+                  <th scope="col" class="table-primary">tambahkan</th>
                 </tr>
               </thead>
               <tbody>
+                {{#each_upto pasien 10}}
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-primary" href="#">Tambahkan</a></td>
+                  <th scope="row">#{{_id}}</th>
+                  <td>{{nama}}<br></td>
+                  <td>{{alamat}}</td>
+                  <td> <form action="/pasien/{{_id}}" method="post"> <button type="submit" class="btn btn-primary" href="#">Tambahkan</button> </form> </td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-primary" href="#">Tambahkan</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-primary" href="#">Tambahkan</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-primary" href="#">Tambahkan</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-primary" href="#">Tambahkan</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">6</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-primary" href="#">Tambahkan</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">7</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-primary" href="#">Tambahkan</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">8</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-primary" href="#">Tambahkan</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">9</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-primary" href="#">Tambahkan</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">10</th>
-                  <td>Nama<br></td>
-                  <td>Alamat</td>
-                  <td><a class="btn btn-primary" href="#">Tambahkan</a></td>
-                </tr>
+                {{/each_upto}}
               </tbody>
             </table>
           </div>

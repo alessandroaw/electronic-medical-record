@@ -11,12 +11,12 @@
   <meta name="keywords" content="Pingendo restaurant food aquamarine free template bootstrap 4">
   <!-- CSS dependencies -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="aquamarine.css" type="text/css">
+  <link rel="stylesheet" href="/aquamarine.css" type="text/css">
   <!-- Script: Make my navbar transparent when the document is scrolled to top -->
-  <script src="js/navbar-ontop.js"></script>
+  <script src="/js/navbar-ontop.js"></script>
   <!-- Script: Animated entrance -->
-  <script src="js/animate-in.js"></script>
-  <link rel="stylesheet" href="../../aquamarine.css">
+  <script src="/js/animate-in.js"></script>
+  <link rel="/stylesheet" href="../../aquamarine.css">
 </head>
 
 <body style="	background-image: url(C:/Users/aldomatthew/OneDrive - Institut Teknologi Bandung/Picture/Travel-Photography-HD-Wallpaper-1024x576.jpg);	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
@@ -27,36 +27,44 @@
       <div class="row" style="">
         <div class="mx-auto col-lg-6 col-10">
           <h1><b>Data Pasien</b></h1>
-          <form class="text-left" style="">
-            <div class="form-group"> <label for="form16">Nama Lengkap</label> <input type="text" class="form-control" id="form16" placeholder="Johann W. Goethe" required="required"> </div>
-            <div class="form-group"> <label for="form16">NIP/NIM</label> <input type="text" class="form-control" id="form16" placeholder="Johann W. Goethe" required="required"> </div>
-            <div class="form-group"> <label for="form16">Tanggal Lahir</label> <input type="text" class="form-control" id="form16" placeholder="Johann W. Goethe" required="required"> </div>
-            <div class="form-group"> <label for="form16">Pekerjaan</label> <input type="text" class="form-control" id="form16" placeholder="Johann W. Goethe" required="required"> </div>
-            <div class="form-group"> <label for="form17">Alamat</label> <input type="text" class="form-control" id="form17" placeholder="Werther Inc." required="required"> </div>
-            <div class="form-group"> <label for="form17">Nomor Telepon/HP.</label> <input type="text" class="form-control" id="form17" placeholder="Werther Inc." required="required"> </div>
+          <form class="text-left" action="/pasien/tambah" method="post">
+
+            <div class="form-group"> <label for="form16">Nama Lengkap</label> <input type="text" name="nama" class="form-control" id="form16" placeholder="Johann W. Goethe" required="required"> </div>
+            <div class="form-group"> <label for="form16">NIP/NIM</label> <input type="number" name="nomorInduk" class="form-control" id="form16" placeholder="Johann W. Goethe" required="required"> </div>
+            <div class="form-group"> <label for="form16">Tanggal Lahir</label> <input type="date" name="tanggalLahir" class="form-control" id="form16" placeholder="Johann W. Goethe" required="required"> </div>
+            <div class="form-group"> <label for="form16">Pekerjaan</label> <input type="text" name="pekerjaan" class="form-control" id="form16" placeholder="Johann W. Goethe" required="required"> </div>
+            <div class="form-group"> <label for="form17">Alamat</label> <input type="text" name="alamat" class="form-control" id="form17" placeholder="Werther Inc." required="required"> </div>
+            <div class="form-group"> <label for="form17">Nomor Telepon/HP.</label> <input type="tel" name="nomorTelp" class="form-control" id="form17" placeholder="Werther Inc." required="required"> </div>
             <div class="form-row">
               <div class="form-group col-md-6" style="">
-                <div class="btn-group">
-                  <button data-toggle="dropdown" class="btn dropdown-toggle btn-info"> Golongan Darah</button>
-                  <div class="dropdown-menu"> <a class="dropdown-item" href="#">A</a><a class="dropdown-item" href="#">AB</a><a class="dropdown-item" href="#">B</a><a class="dropdown-item" href="#">O</a>
-                  </div>
-                </div>
+                <!-- <div class="btn-group"> -->
+                  <!-- <button data-toggle="dropdown" class="btn dropdown-toggle btn-info"> Golongan Darah</button> -->
+                  <p>Golongan Darah</p>
+                  <select name="golonganDarah" class="btn dropdown-toggle btn-info">
+                    <option class="dropdown-item" value="A">A</option>
+                    <option class="dropdown-item" value="AB">AB</option>
+                    <option class="dropdown-item" value="B">B</option>
+                    <option class="dropdown-item" value="O">O</a>
+                  </select>
+                <!-- </div> -->
               </div>
               <div class="form-group col-md-3" style="">
-                <div class="btn-group">
-                  <button data-toggle="dropdown" align="right" class="btn dropdown-toggle btn-info"> Rhesus</button>
-                  <div class="dropdown-menu"> <a class="dropdown-item" href="#" contenteditable="true">+</a>
+                <!-- <div class=> -->
+                  <!-- <button data-toggle="dropdown" align="right" class="btn dropdown-toggle btn-info"> Rhesus</button> -->
+                  <p>Rhesus</p>
+                  <select name="rh" class="btn dropdown-toggle btn-info">
+                    <option class="dropdown-item" value="+">+</option>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">-</a>
-                  </div>
-                </div>
+                    <option class="dropdown-item" value="-">-</option>
+                  </select>
+                <!-- </div> -->
               </div>
             </div>
             <div class="row">
               <div align="center" class="col-md-12"><button type="submit" class="btn btn-secondary btn-lg btn-block">TAMBAH</button></div>
             </div>
             <div class="form-group">
-              <div class="form-check"> <label class="form-check-label bg-primary" for="form21"></label> </div>
+              <!-- <div class="form-check"> <label class="form-check-label bg-primary" for="form21"></label> </div> -->
             </div>
           </form>
         </div>
@@ -75,7 +83,6 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous" style=""></script>
   <!-- Script: Smooth scrolling between anchors in the same page -->
-  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
 </body>
 
 </html>

@@ -12,10 +12,11 @@ const MongoStore = require('connect-mongo')(session);
 const {ObjectID} = require('mongodb');
 const {mongoose} =  require('./db/mongoose');
 var {Dokter} = require('./models/dokter');
-// var {Buku} = require('./models/buku');
+var {Pasien} = require('./models/pasien');
 // var {authenticate} = require('./middleware/authenticate');
 var app = express();
 const port = process.env.PORT || 3000;
+var temp = null;
 
 // route
 const pasienRoute = require('./routes/pasien');
@@ -80,7 +81,20 @@ app.use((req,res, next) => {
 
 //home
 app.get('/', (req, res) => {
-	res.render('Daftar Pasien.hbs');
+  if(!temp){
+    temp = '';
+  }
+  var keyword = new RegExp(".*"+temp+".*","i");
+  Pasien.find({nama:keyword}).then((pasien) => {
+    res.render('Daftar Pasien.hbs', {pasien});
+  }).catch((e)=> {
+    res.status(400).send(e);
+  });
+});
+
+app.post('/', (req, res) => {
+  temp = req.body.keyword;
+  res.redirect('/');
 });
 
 // route

@@ -12,15 +12,22 @@ router.get('/tambah', (req, res) => {
 
 // Post pasien baru
 router.post('/tambah', (req, res) => {
-
-    var body = _.pick(req.body, [])
-    var userData = new Pasien({body});
-
+  var body = _.pick(req.body, ['nama', 'nomorInduk', 'tanggalLahir', 'pekerjaan', 'alamat', 'nomorTelp', 'golonganDarah','rh']);
+    body.golonganDarah += body.rh;
+    var userData = new Pasien({
+      nama: body.nama,
+      nomorInduk: body.nomorInduk,
+      tanggalLahir: body.tanggalLahir,
+      pekerjaan: body.pekerjaan,
+      alamat: body.alamat,
+      nomorTelp: body.nomorTelp,
+      golonganDarah: body.golonganDarah
+    });
+    console.log(userData);
     userData.save().then((pasien) => {
-      req.session.userId = pasien._id;
-      return res.send(pasien)
+      res.redirect('/');
     }). catch((e) => {
-        res.send(e)
+      res.send(e)
     });
 
 });

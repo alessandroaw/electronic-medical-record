@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-var PinjamSchema = new mongoose.Schema({
+var AntrianSchema = new mongoose.Schema({
   _idAnggota:{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'anggota',
@@ -11,7 +11,7 @@ var PinjamSchema = new mongoose.Schema({
     ref: 'buku',
     required: true
 	},
-  tanggalPinjam: {
+  tanggalAntrian: {
     type: Date,
     required: true
   },
@@ -25,6 +25,6 @@ var PinjamSchema = new mongoose.Schema({
   }
 });
 
-var Pinjam = mongoose.model('pinjam', PinjamSchema);
+var Antrian = mongoose.model('antrian', AntrianSchema);
 
-module.exports = {Pinjam};
+module.exports = {Antrian};
