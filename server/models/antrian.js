@@ -1,25 +1,21 @@
 const mongoose = require('mongoose');
 
 var AntrianSchema = new mongoose.Schema({
-  _idAnggota:{
+  _idPasien:{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'anggota',
+    ref: 'pasien',
     required: true
 	},
-  _idBuku:{
+  _idDokter:{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'buku',
-    required: true
+    ref: 'dokter',
+    // required: true
 	},
-  tanggalAntrian: {
+  timeStamp: {
     type: Date,
     required: true
   },
-  tanggalPengembalian: {
-    type: Date,
-    default: null
-  },
-  isDikembalikan: {
+  isServed: {
     type: Boolean,
     default: false
   }

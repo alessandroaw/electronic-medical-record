@@ -13,6 +13,7 @@ const {ObjectID} = require('mongodb');
 const {mongoose} =  require('./db/mongoose');
 var {Dokter} = require('./models/dokter');
 var {Pasien} = require('./models/pasien');
+var {Antrian} = require('./models/antrian');
 // var {authenticate} = require('./middleware/authenticate');
 var app = express();
 const port = process.env.PORT || 3000;
@@ -96,6 +97,21 @@ app.post('/', (req, res) => {
   temp = req.body.keyword;
   res.redirect('/');
 });
+
+app.post('/tambah-antrian/:id', (req, res) => {
+  var id = req.params.id;
+  var antrian = new Antrian({
+    _idPasien: id,
+    _idDokter: null,
+    timeStamp: new Date(),
+  })
+
+  antrian.save().then((doc) => {
+    console.log(doc);
+  });
+  // res.redirect('/');
+});
+
 
 // route
 app.use('/dokter', dokterRoute);
