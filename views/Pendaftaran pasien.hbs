@@ -16,11 +16,11 @@
   <script src="/js/navbar-ontop.js"></script>
   <!-- Script: Animated entrance -->
   <script src="/js/animate-in.js"></script>
-  <link rel="/stylesheet" href="../../aquamarine.css">
 </head>
 
-<body style="	background-image: url(C:/Users/aldomatthew/OneDrive - Institut Teknologi Bandung/Picture/Travel-Photography-HD-Wallpaper-1024x576.jpg);	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
+<body style="	background-image: #12bbad;	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
   <!-- Navbar -->
+  {{>header}}
   <!-- Cover -->
   <div class="py-5 bg-primary" style="	background-image: #12bbad;	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
     <div class="container">
@@ -44,7 +44,7 @@
                     <option class="dropdown-item" value="A">A</option>
                     <option class="dropdown-item" value="AB">AB</option>
                     <option class="dropdown-item" value="B">B</option>
-                    <option class="dropdown-item" value="O">O</a>
+                    <option class="dropdown-item" value="O">O</option>
                   </select>
                 <!-- </div> -->
               </div>
@@ -71,15 +71,7 @@
       </div>
     </div>
   </div>
-  <!-- Intro -->
-  <!-- Gallery -->
-  <!-- Menu -->
-  <!-- Carousel reviews -->
-  <!-- Carousel venue -->
-  <!-- Events -->
-  <!-- Parallax section -->
-  <!-- Footer -->
-  <!-- JavaScript dependencies -->
+  {{>footer}}
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous" style=""></script>
   <!-- Script: Smooth scrolling between anchors in the same page -->

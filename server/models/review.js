@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
 
-var ReviewSchema = new mongoose.Schema({
+var MedicalRecordSchema = new mongoose.Schema({
   _idAnggota:{
     type: mongoose.Schema.Types.ObjectId,
     ref:'anggota',
     required: true
 	},
-  _idBuku:{
+  _idDokter:{
     type: mongoose.Schema.Types.ObjectId,
-    ref:'buku',
+    ref:'dokter',
     required: true
   },
-  review: {
+  rekamMedis: {
     type: String,
     required: true,
     trim: true,
@@ -25,6 +25,6 @@ var ReviewSchema = new mongoose.Schema({
   }
 });
 
-var Review = mongoose.model('review', ReviewSchema);
+var MedicalRecord = mongoose.model('rekamMedis', MedicalRecordSchema);
 
-module.exports = {Review};
+module.exports = {MedicalRecord};

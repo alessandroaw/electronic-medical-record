@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- PAGE settings -->
   <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
-  <title>Styleguide</title>
+  <title>Daftar Pasien</title>
   <meta name="author" content="Pingendo">
   <!-- CSS dependencies -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
@@ -14,23 +14,8 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-light">
-    <div class="container"> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar6">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbar6"> <a class="navbar-brand text-primary d-none d-md-block" href="#">
-          <i class="fa d-inline fa-lg fa-circle"></i>
-          <b>E-Med<br></b>
-        </a>
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item"> <a class="nav-link" href="#" contenteditable="true">Bumi Medika Ganesha</a> </li>
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item"> <a class="nav-link text-primary" href="/dokter/login">Masuk Sebagai Dokter</a> </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <body style="	background-image: #12bbad;	background-position: top left;	background-size: 100%;	background-repeat: repeat;">
+  {{>header}}
   <div class="py-1">
     <div class="container">
       <div class="row">
@@ -65,7 +50,7 @@
                   <th scope="col" style="" class="table-primary w-25">ID</th>
                   <th scope="col" class="table-primary w-50">Nama</th>
                   <th scope="col" class="table-primary w-75">Alamat</th>
-                  <th scope="col" class="table-primary">tambahkan</th>
+                  <th scope="col" class="table-primary">Tambahkan</th>
                 </tr>
               </thead>
               <tbody>
@@ -100,6 +85,7 @@
       </div>
     </div>
   </div>
+  {{>footer}}
   <script src="http://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

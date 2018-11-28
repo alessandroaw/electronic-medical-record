@@ -98,8 +98,24 @@ app.post('/', (req, res) => {
   res.redirect('/');
 });
 
-app.post('/tambah-antrian/:id', (req, res) => {
+app.post('/remove-antrian/:id', (req, res) => {
   var id = req.params.id;
+  Antrian.findByIdAndUpdate(
+  id,{
+    $set:{
+      isServed:true,
+      _idDokter:req.session.userId
+    }
+  }, {returnOriginal:false}).then((doc) => {
+    console.log(doc);
+    res.redirect(`/pasien/${doc._idPasien}`);
+  }).catch((e) => {
+    res.status(400).send(e);
+  });
+});
+
+app.post('/tambah-antrian/:idPasien', (req, res) => {
+  var id = req.params.idPasien;
   var antrian = new Antrian({
     _idPasien: id,
     _idDokter: null,
@@ -108,8 +124,10 @@ app.post('/tambah-antrian/:id', (req, res) => {
 
   antrian.save().then((doc) => {
     console.log(doc);
+    res.redirect('/');
+  }).catch((e) => {
+    res.status(400).send(e);
   });
-  // res.redirect('/');
 });
 
 

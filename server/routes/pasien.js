@@ -24,9 +24,10 @@ router.post('/tambah', (req, res) => {
       golonganDarah: body.golonganDarah
     });
     console.log(userData);
+
     userData.save().then((pasien) => {
       res.redirect('/');
-    }). catch((e) => {
+    }).catch((e) => {
       res.send(e)
     });
 
@@ -34,7 +35,12 @@ router.post('/tambah', (req, res) => {
 
 //goes here from antrian
 router.get('/:id', (req, res) => {
-	res.render('Profil Pasien.hbs');
+  var id = req.params.id;
+  Pasien.findById(id).then((pasien) => {
+    res.render('Profil Pasien.hbs',{pasien});
+  }).catch ((e) => {
+    res.statis(400).send(e);
+  })
 });
 
 //goes here from profile
@@ -47,7 +53,7 @@ router.get('/rekam-medis/:id', (req, res) => {
 	res.render('Rekam Medis.hbs');
 });
 
-//home
+//antrian pasien
 router.get('/', authenticate, (req, res) => {
 	res.render('Daftar Antrian.hbs');
 });

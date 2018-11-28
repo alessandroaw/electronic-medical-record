@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {Dokter} = require('../models/dokter');
+const {Antrian} = require('../models/antrian');
 const path = require('path');
 const _ = require('lodash');
 var {authenticate} = require('../middleware/authenticate');
@@ -9,7 +10,15 @@ var {authenticate} = require('../middleware/authenticate');
 
 //home
 router.get('/', authenticate, (req, res) => {
-	res.render('Daftar Antrian.hbs');
+  Antrian.find({isServed:false})
+  .populate('_idPasien')
+  .then((antrian) => {
+    console.log('masuk : ');
+    console.log(antrian);
+    res.render('Daftar Antrian.hbs',{antrian});
+  }).catch((e) => {
+    res.status(400).send(e);
+  });
 });
 
 //home
