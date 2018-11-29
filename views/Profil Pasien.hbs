@@ -60,6 +60,7 @@
                   <th>No</th>
                   <th>Nomor Rekam Medis</th>
                   <th>Tanggal Pemeriksaan</th>
+                  <th>Diagnosa</th>
                   <th></th>
                 </tr>
               </thead>
@@ -69,6 +70,7 @@
                   <th>{{inc @index}}</th>
                   <td>{{_id}}</td>
                   <td>{{toDateString tanggalPemeriksaan}}</td>
+                  <td>{{diagnosa}}</td>
                   <td><a class="btn btn-primary" href="/pasien/emr/{{_id}}">Tampilkan</a></td>
                 </tr>
                 {{/each}}

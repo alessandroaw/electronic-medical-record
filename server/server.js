@@ -92,7 +92,8 @@ app.get('/', (req, res) => {
     temp = '';
   }
   var keyword = new RegExp(".*"+temp+".*","i");
-  Pasien.find({nama:keyword}).then((pasien) => {
+  Pasien.find({nama:keyword})
+	.then((pasien) => {
     res.render('Daftar Pasien.hbs', {pasien, wrong});
   }).catch((e)=> {
     res.status(400).send(e);
