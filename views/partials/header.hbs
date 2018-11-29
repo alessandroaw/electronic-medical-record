@@ -14,7 +14,10 @@
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item"> <a class="nav-link" href="/dokter">Dokter</a> </li>
+        {{#if wrong}}
+        {{else}}
         <li class="nav-item"> <a class="nav-link" href="/dokter/logout">logout</a> </li>
+        {{/if}}
       </ul>
     </div>
     <!-- </div> -->

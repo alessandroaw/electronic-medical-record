@@ -8,7 +8,8 @@ var {authenticate} = require('../middleware/authenticate');
 
 // GET pendaftaran pasien
 router.get('/tambah', (req, res) => {
-  res.render('Pendaftaran pasien.hbs');
+  var wrong = true;
+  res.render('Pendaftaran pasien.hbs', {wrong});
 });
 
 // Post pasien baru

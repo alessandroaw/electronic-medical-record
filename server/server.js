@@ -20,6 +20,7 @@ var app = express();
 const port = process.env.PORT || 3000;
 var temp = null;
 var logout = true;
+var wrong = true;
 
 // route
 const pasienRoute = require('./routes/pasien');
@@ -92,7 +93,7 @@ app.get('/', (req, res) => {
   }
   var keyword = new RegExp(".*"+temp+".*","i");
   Pasien.find({nama:keyword}).then((pasien) => {
-    res.render('Daftar Pasien.hbs', {pasien});
+    res.render('Daftar Pasien.hbs', {pasien, wrong});
   }).catch((e)=> {
     res.status(400).send(e);
   });
@@ -140,11 +141,6 @@ app.post('/tambah-antrian/:idPasien',(req, res) => {
 app.use('/dokter', dokterRoute);
 app.use('/pasien', pasienRoute);
 
-
-//ini apa ya?
-app.get('/pendaftaran', (req, res) => {
-	res.render('Pendaftaran.hbs');
-});
 
 
 
