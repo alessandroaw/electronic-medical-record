@@ -66,7 +66,7 @@
               <tbody>
                 {{#each emr}}
                 <tr>
-                  <th>{{@index}}</th>
+                  <th>{{inc @index}}</th>
                   <td>{{_id}}</td>
                   <td>{{toDateString tanggalPemeriksaan}}</td>
                   <td><a class="btn btn-primary" href="/pasien/emr/{{_id}}">Tampilkan</a></td>

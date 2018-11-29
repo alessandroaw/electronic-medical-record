@@ -19,6 +19,7 @@ var {authenticate} = require('./middleware/authenticate');
 var app = express();
 const port = process.env.PORT || 3000;
 var temp = null;
+var logout = true;
 
 // route
 const pasienRoute = require('./routes/pasien');
@@ -51,6 +52,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 hbs.registerPartials(path.join(__dirname, '../views/partials'));
 hbs.registerHelper('getCurrentYear', () => {return new Date().getFullYear()});
 hbs.registerHelper('getAge', (date) => {return new Date().getFullYear() - date.getFullYear()});
+hbs.registerHelper('inc', (value, option) => {return parseInt(value) + 1});
 hbs.registerHelper('toDateString', (date) => {return date.toDateString()});
 hbs.registerHelper('each_upto', function(ary, max, options) {
     if(!ary || ary.length == 0)

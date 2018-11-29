@@ -11,12 +11,13 @@ var {authenticate} = require('../middleware/authenticate');
 
 //home
 router.get('/', authenticate, (req, res) => {
+  var index = 0;
   Antrian.find({isServed:false})
   .populate('_idPasien')
   .then((antrian) => {
     console.log('masuk : ');
     console.log(antrian);
-    res.render('Daftar Antrian.hbs',{antrian});
+    res.render('Daftar Antrian.hbs',{antrian, index});
   }).catch((e) => {
     res.status(400).send(e);
   });
