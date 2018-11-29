@@ -14,18 +14,26 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3"><img class="img-fluid d-block" src="https://static.pingendo.com/img-placeholder-1.svg"></div>
-        <div class="col-md-5">
-          {{#with pasien}}
-          <h3 class="">{{nama}}</h3>
-          <h4 class="">{{nomorInduk}}</h4>
-          <h4 class="">{{tanggalLahir}}</h4>
-          <h4 class="">{{alamat}}</h4>
+        <div class="col-md-2">
+          <h5 class="">Nama</h5>
+          <h5 class="">Jenis Kelamin</h5>
+          <h5 class="">NIP/NIM/NIK</h5>
+          <h5 class="">Umur</h5>
+          <h5 class="">Alamat</h5>
+          <h5 class="">No HP</h5>
+          <h5 class="">Pekerjaan</h5>
+          <h5 class="">Golongan Darah</h5>
         </div>
-        <div class="col-md-4">
-          <h3 class="">{{nomorTelp}}</h3>
-          <h4 class="">{{pekerjaan}}</h4>
-          <h4 class="">{{golonganDarah}}</h4>
-          <h4 class="">{{Rhesus}}</h4>
+        <div class="col-md-7">
+          {{#with pasien}}
+          <h5 class="">: {{nama}}</h5>
+          <h5 class="">: {{gender}}</h5>
+          <h5 class="">: {{nomorInduk}}</h5>
+          <h5 class="">: {{getAge tanggalLahir}}</h5>
+          <h5 class="">: {{alamat}}</h5>
+          <h5 class="">: {{nomorTelp}}</h5>
+          <h5 class="">: {{pekerjaan}}</h5>
+          <h5 class="">: {{golonganDarah}}</h5>
           {{/with}}
         </div>
       </div>
@@ -37,7 +45,7 @@
         <div class="col-md-10" style="">
           <h1 class="">Riwayat Rekam Medis</h1>
         </div>
-        <div class="col-md-2" style=""><a class="btn btn-primary" href="#">Tambah Rekam Medis</a></div>
+        <div class="col-md-2" style=""><a class="btn btn-primary" href="/dokter/tambah-mr/{{pasien._id}}">Tambah Rekam Medis</a></div>
       </div>
     </div>
   </div>
@@ -56,24 +64,14 @@
                 </tr>
               </thead>
               <tbody>
+                {{#each emr}}
                 <tr>
-                  <th>1</th>
-                  <td>RM1-01-01</td>
-                  <td>27 Agustus 2018</td>
-                  <td><a class="btn btn-primary" href="#">Tampilkan</a></td>
+                  <th>{{@index}}</th>
+                  <td>{{_id}}</td>
+                  <td>{{toDateString tanggalPemeriksaan}}</td>
+                  <td><a class="btn btn-primary" href="/pasien/emr/{{_id}}">Tampilkan</a></td>
                 </tr>
-                <tr>
-                  <th>2</th>
-                  <td>RM1-01-02</td>
-                  <td>1 September 2018</td>
-                  <td><a class="btn btn-primary" href="#">Tampilkan</a></td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>RM1-01-03</td>
-                  <td>20 Oktober 2018</td>
-                  <td><a class="btn btn-primary" href="#">Tampilkan</a></td>
-                </tr>
+                {{/each}}
               </tbody>
             </table>
           </div>

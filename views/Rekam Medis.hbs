@@ -9,10 +9,95 @@
 </head>
 
 <body>
+  {{>header}}
+  <div class="py-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="">Rekam Medis Elektronik</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <h5 class="">Nama</h5>
+          <h5 class="">Jenis Kelamin</h5>
+          <h5 class="">NIP/NIM/NIK</h5>
+          <h5 class="">Umur</h5>
+        </div>
+        <div class="col-md-4">
+          {{#with emr._idPasien}}
+          <h5 class="">: {{nama}}</h5>
+          <h5 class="">: {{gender}}</h5>
+          <h5 class="">: {{nomorInduk}}</h5>
+          <h5 class="">: {{getAge tanggalLahir}}</h5>
+        </div>
+        <div class="col-md-2">
+          <h5 class="">No HP</h5>
+          <h5 class="">Pekerjaan</h5>
+          <h5 class="">Golongan Darah</h5>
+          <h5 class="">Alamat</h5>
+        </div>
+        <div class="col-md-4">
+          <h5 class="">: {{alamat}}</h5>
+          <h5 class="">: {{nomorTelp}}</h5>
+          <h5 class="">: {{pekerjaan}}</h5>
+          <h5 class="">: {{golonganDarah}}</h5>
+          {{/with}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Tanggal Pemeriksaan</th>
+                  <th>Dokter</th>
+                  <th>Subjektif</th>
+                  <th>Diagnosa</th>
+                  <th>Tindakan</th>
+                  <th>Medikasi</th>
+                  <th>Catatan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  {{#with emr}}
+                  <th>{{toDateString tanggalPemeriksaan}}</th>
+                  <th>{{_idDokter.nama}}</th>
+                  <th>{{subjektif}}</th>
+                  <th>{{diagnosa}}</th>
+                  <th>{{tindakan}}</th>
+                  <th>{{medikasi}}</th>
+                  <th>{{catatan}}</th>
+                  {{/with}}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12"><a class="btn btn-primary w-100" href="#">Cetak Rekam Medis</a></div>
+      </div>
+    </div>
+  </div>
+  {{>footer}}
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
 </body>
 
 </html>

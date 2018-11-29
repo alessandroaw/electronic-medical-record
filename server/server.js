@@ -14,6 +14,7 @@ const {mongoose} =  require('./db/mongoose');
 var {Dokter} = require('./models/dokter');
 var {Pasien} = require('./models/pasien');
 var {Antrian} = require('./models/antrian');
+var {authenticate} = require('./middleware/authenticate');
 // var {authenticate} = require('./middleware/authenticate');
 var app = express();
 const port = process.env.PORT || 3000;
@@ -49,6 +50,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //hbs initialization
 hbs.registerPartials(path.join(__dirname, '../views/partials'));
 hbs.registerHelper('getCurrentYear', () => {return new Date().getFullYear()});
+hbs.registerHelper('getAge', (date) => {return new Date().getFullYear() - date.getFullYear()});
+hbs.registerHelper('toDateString', (date) => {return date.toDateString()});
 hbs.registerHelper('each_upto', function(ary, max, options) {
     if(!ary || ary.length == 0)
         return options.inverse(this);
@@ -98,7 +101,7 @@ app.post('/', (req, res) => {
   res.redirect('/');
 });
 
-app.post('/remove-antrian/:id', (req, res) => {
+app.post('/remove-antrian/:id', authenticate, (req, res) => {
   var id = req.params.id;
   Antrian.findByIdAndUpdate(
   id,{
@@ -114,7 +117,7 @@ app.post('/remove-antrian/:id', (req, res) => {
   });
 });
 
-app.post('/tambah-antrian/:idPasien', (req, res) => {
+app.post('/tambah-antrian/:idPasien',(req, res) => {
   var id = req.params.idPasien;
   var antrian = new Antrian({
     _idPasien: id,

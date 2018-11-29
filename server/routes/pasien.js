@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {Pasien} = require('../models/pasien');
+const {MedicalRecord} = require('../models/medicalRecord');
 const path = require('path');
 const _ = require('lodash');
 var {authenticate} = require('../middleware/authenticate');
@@ -12,11 +13,12 @@ router.get('/tambah', (req, res) => {
 
 // Post pasien baru
 router.post('/tambah', (req, res) => {
-  var body = _.pick(req.body, ['nama', 'nomorInduk', 'tanggalLahir', 'pekerjaan', 'alamat', 'nomorTelp', 'golonganDarah','rh']);
+  var body = _.pick(req.body, ['nama','gender', 'nomorInduk', 'tanggalLahir', 'pekerjaan', 'alamat', 'nomorTelp', 'golonganDarah','rh']);
     body.golonganDarah += body.rh;
     var userData = new Pasien({
       nama: body.nama,
       nomorInduk: body.nomorInduk,
+      gender: body.gender,
       tanggalLahir: body.tanggalLahir,
       pekerjaan: body.pekerjaan,
       alamat: body.alamat,
@@ -33,11 +35,28 @@ router.post('/tambah', (req, res) => {
 
 });
 
+router.get('/emr/:id', (req, res) => {
+  var id = req.params.id;
+
+  MedicalRecord.findById(id)
+  .populate('_idPasien')
+  .populate('_idDokter')
+  .then((emr) => {
+    res.render('Rekam Medis.hbs',{emr});
+  }).catch ((e) => {
+    res.statis(400).send(e);
+  })
+});
+
 //goes here from antrian
 router.get('/:id', (req, res) => {
   var id = req.params.id;
-  Pasien.findById(id).then((pasien) => {
-    res.render('Profil Pasien.hbs',{pasien});
+  MedicalRecord.find({_idPasien:id})
+  .then((emr) => {
+    Pasien.findById(id)
+    .then((pasien) => {
+      res.render('Profil Pasien.hbs',{emr, pasien});
+    });
   }).catch ((e) => {
     res.statis(400).send(e);
   })

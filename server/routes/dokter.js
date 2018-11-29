@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {Dokter} = require('../models/dokter');
 const {Antrian} = require('../models/antrian');
+const {MedicalRecord} = require('../models/medicalRecord');
 const path = require('path');
 const _ = require('lodash');
 var {authenticate} = require('../middleware/authenticate');
@@ -24,6 +25,33 @@ router.get('/', authenticate, (req, res) => {
 //home
 router.get('/login', (req, res) => {
 	res.render('Login.hbs');
+});
+
+//home
+router.get('/tambah-mr/:id', authenticate, (req, res) => {
+  var id = req.params.id;
+  res.render('Form Rekam Medis.hbs',{id});
+});
+
+//home
+router.post('/tambah-mr/:idPasien', authenticate, (req, res) => {
+  var body = _.pick(req.body,['subjektif', 'diagnosa', 'tindakan', 'medikasi', 'catatan'])
+  var emr = new MedicalRecord({
+    _idPasien: req.params.idPasien,
+    _idDokter: req.session.userId,
+    subjektif: body.subjektif,
+    diagnosa: body.diagnosa,
+    tindakan: body.tindakan,
+    medikasi: body.medikasi,
+    catatan: body.catatan,
+    tanggalPemeriksaan: new Date(),
+  });
+  emr.save().then((doc) => {
+    console.log(doc);
+    res.redirect(`/pasien/${req.params.idPasien}`)
+  }).catch((e) => {
+    res.status(400).send();
+  });
 });
 
 router.post('/login', (req, res) => {
@@ -87,8 +115,11 @@ router.get('/logout', (req, res, next) => {
     });
   } else {
     res.statis(400).send('<h1>You are not logged in yet, you need to log in to log out</h1>')
+    // next();
   }
 });
+
+
 
   //
   // router.get('/search', authenticate, (req, res) => {

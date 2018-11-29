@@ -34,6 +34,12 @@ var PasienSchema = new mongoose.Schema({
 		trim: true,
 		minlength: 1,
 	},
+	gender:{
+		type: String,
+		default: 'laki-laki',
+		trim: true,
+		minlength: 1,
+	},
 	nomorTelp:{
 		type: String,
 		default: '081234567891',
